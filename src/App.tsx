@@ -13,7 +13,6 @@ interface PopoverProps extends HTMLProps<HTMLDivElement> {
 const Popover: React.FC<PopoverProps> = ({ targetRef, isOpen, ...props }) => {
   const popoverRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ top: 0, left: 0 });
-  const [isVisible, setVisible] = useState(false);
 
   const calculatePosition = () => {
     if (isOpen && targetRef.current && popoverRef.current) {
@@ -68,7 +67,7 @@ const NavMenu: React.FC<NavBarProps> = ({onMenuPress, cartRef, ...props}) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <nav className='w-full flex flex-row justify-between bg-white p-8 sticky top-0 z-20'>
+    <nav {...props} className='w-full flex flex-row justify-between bg-white p-8 sticky top-0 z-20'>
         {/* LEFT SIDE */}
         <div className="flex flex-row min-w-0 items-center gap-4">
           <button className="sm:hidden" onClick={() => onMenuPress()}><GiHamburgerMenu size={28}></GiHamburgerMenu></button>
